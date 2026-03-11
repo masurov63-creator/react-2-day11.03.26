@@ -3,8 +3,14 @@ import { useFormik } from 'formik';
 import { Button, Modal } from 'antd';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import Switch from '@mui/material/Switch';
+
 const Home = () => {
-    const { data, deletUser, addUser, editUser } = useTodo()
+
+
+    const label = { inputProps: { 'aria-label': 'Switch demo' } };
+
+    const { data, deletUser, addUser, editUser, checkUser } = useTodo()
     const [idx, setIdx] = useState(0)
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -136,7 +142,7 @@ const Home = () => {
                                 <Link to={`/info/${el.id}`}>
                                     <span className='p-3  border rounded   ml-[10px]   hover:text-white hover:shadow-[0px_0px_10px_10px_#fff] '>👤</span>
                                 </Link>
-
+                                <Switch checked={el.status} onChange={() => checkUser(el.id)}  {...label} defaultChecked />
                             </td>
 
 

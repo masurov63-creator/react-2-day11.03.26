@@ -14,6 +14,7 @@ interface IStore {
     addUser: (user: IData) => void
     editUser: (user: IData) => void
     // editUser: (user: IData) => void
+    checkUser: (id: number) => void
 }
 
 export const useTodo = create<IStore>((set) => ({
@@ -37,6 +38,11 @@ export const useTodo = create<IStore>((set) => ({
             data: state.data.map((e) =>
                 e.id == user.id ? user : e
             )
-        }))
+        })),
+    checkUser: (id: number) =>
+        set((state) => ({
+            data: state.data.map((e) =>
+                e.id === id ? { ...e, status: !e.status } : e)
+        })),
 
 }))
