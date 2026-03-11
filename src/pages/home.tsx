@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
 import { useTodo } from '../store/todo'
 import { useFormik } from 'formik';
 import { Button, Modal } from 'antd';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 const Home = () => {
     const { data, deletUser, addUser, editUser } = useTodo()
     const [idx, setIdx] = useState(0)
